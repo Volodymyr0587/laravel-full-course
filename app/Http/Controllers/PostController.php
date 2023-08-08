@@ -21,14 +21,14 @@ class PostController extends Controller
         return 'Store post';
     }
 
-    public function show()
+    public function show($post)
     {
-        return 'View single post';
+        return "View single post with id = {$post}";
     }
 
-    public function edit()
+    public function edit($post)
     {
-        return 'Edit post';
+        return "Edit post with id = {$post}";
     }
 
     public function update()
