@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Posts\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -32,6 +33,13 @@ Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.updat
 Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::put('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+
+// Nested routes
+Route::resource('posts/{post}/comments', CommentController::class)->except([
+    'inex', 'show'
+]);
+
+
 
 // Route::resource('posts', PostController::class);
 
