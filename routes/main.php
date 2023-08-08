@@ -12,12 +12,12 @@ use App\Http\Controllers\Posts\CommentController;
 //     return view('welcome');
 // });
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 
-Route::redirect('/home', '/');
+Route::redirect('/home', '/')->name('home.redirect');
 
 
-Route::get('/test', TestController::class);
+Route::get('/test', TestController::class)->name('test');
 
 // Registration and Login
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
