@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Posts\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Posts\CommentController;
 
 
 // Route::get('/', function () {
@@ -17,26 +19,43 @@ Route::redirect('/home', '/');
 
 Route::get('/test', TestController::class);
 
-// CRUD - Create, Read, Update, Delete
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
+// Registration and Login
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+// Confirm login by email
+// Route::get('/login/{user}/confirm', [LoginController::class, 'confirm'])->name('login.confirm');
+// Route::post('/login/{user}/confirm', [LoginController::class, 'confirm'])->name('login.confirm');
 
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 
-Route::get('posts/{post}', [PostController::class, 'show'])->whereNumber('post')->name('posts.show');
 
-Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
+// User
+Route::prefix('user')->as('user.')->group(function () {
+    // CRUD - Create, Read, Update, Delete
+    Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
-Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
-Route::put('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+
+    Route::get('posts/{post}', [PostController::class, 'show'])->whereNumber('post')->name('posts.show');
+
+    Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+
+    Route::put('posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
+    Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+    Route::put('posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+});
 
 // Nested routes
 Route::resource('posts/{post}/comments', CommentController::class)->except([
-    'inex', 'show'
+    'index',
+    'show'
 ]);
 
 
