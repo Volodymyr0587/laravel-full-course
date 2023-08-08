@@ -31,6 +31,11 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 
 
+//Blog
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
+Route::get('blog/{post}', [BlogController::class, 'show'])->name('blog.show');
+Route::post('blog/{post}/like', [BlogController::class, 'like'])->name('blog.like');
+
 
 // User
 Route::prefix('user')->group(function () {
@@ -91,6 +96,6 @@ Route::resource('posts/{post}/comments', CommentController::class)->except([
 // Route::fallback повинен бути у самому кінці після всіх маршрутів
 // Викликається, коли невірна адреса в браузері введена.
 
-Route::fallback(function () {
-    return 'Fallback';
-});
+// Route::fallback(function () {
+//     return 'Fallback';
+// });
