@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ActiveMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,15 +15,15 @@ class ActiveMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($this->isActive($request)) {
+        if ($this->isAdmin($request)) {
             return $next($request);
         }
 
         abort(403);
     }
 
-    protected function isActive(Request $request)
+    public function isAdmin(Request $request)
     {
-        return true;
+        return false;
     }
 }
