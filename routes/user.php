@@ -5,6 +5,8 @@ use App\Http\Controllers\User\PostController;
 
 // User
 Route::prefix('user')->group(function () {
+    Route::redirect('/', '/user/posts')->name('user');
+
     // CRUD - Create, Read, Update, Delete
     Route::get('/posts', [PostController::class, 'index'])->name('user.posts');
 
