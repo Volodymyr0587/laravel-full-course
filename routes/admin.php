@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 
 // Admin
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'active'])->group(function () {
     Route::redirect('/', '/admin/posts')->name('admin');
 
     // CRUD - Create, Read, Update, Delete
