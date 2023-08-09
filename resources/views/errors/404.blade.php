@@ -10,7 +10,7 @@
 </style>
 
 <article>
-    <h1>!!!</h1>
+    <h1>404</h1>
     <div>
         <p>The page your looking for is not available</p>
 
