@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         // 'log' => \App\Http\Middleware\LogMiddleware::class,
         'active' => \App\Http\Middleware\ActiveMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'token' => \App\Http\Middleware\TokenMiddleware::class,
     ];
 }
