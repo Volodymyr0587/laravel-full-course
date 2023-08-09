@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 
 // Admin
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::redirect('/', '/admin/posts')->name('admin');
+
     // CRUD - Create, Read, Update, Delete
     Route::get('/posts', [PostController::class, 'index'])->name('admin.posts');
 
