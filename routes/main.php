@@ -13,7 +13,7 @@ use App\Http\Controllers\Posts\CommentController;
 //     return view('welcome');
 // });
 
-Route::view('/', 'welcome')->name('home');
+Route::view('/', 'home.index')->name('home');
 
 Route::redirect('/home', '/')->name('home.redirect');
 
