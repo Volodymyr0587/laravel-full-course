@@ -2,9 +2,7 @@
 
 @section('content')
 
-    <x-main />
+    <x-login />
 
 @endsection
-
-
 
