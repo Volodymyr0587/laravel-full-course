@@ -13,13 +13,16 @@
 <body>
 
     <div class="flex flex-col items-center justify-between min-h-screen text-center">
-        @include('components.header')
 
-        <main class="flex grow">
-            Main Content
+        {{-- @include('components.header') --}}
+        <x-header />
+
+        <main class="flex grow py-3">
+            <h1 class="text-xl font-bold">Main Page</h1>
         </main>
 
-        @include('components.footer')
+        {{-- @include('components.footer') --}}
+        <x-footer />
 
     </div>
 </body>
