@@ -10,7 +10,18 @@
 </head>
 <body>
 
-<h1 class="text-blue-500">Heading 1</h1>
+    <div class="flex flex-col justify-between min-h-screen text-center">
+        <header>
+            Header
+        </header>
 
+        <main class="flex-grow">
+            Content
+        </main>
+
+        <footer>
+            Footer
+        </footer>
+    </div>
 </body>
 </html>
