@@ -21,5 +21,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::share('date', date('Y'));
+
+        View::composer('user*', function ($view) {
+            $view->with('balance', 3212);
+        });
     }
 }
