@@ -9,12 +9,12 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return 'Posts in blog';
+        return view('blog.index');
     }
 
     public function show()
     {
-        return 'Single post in blog';
+        return view('blog.show');
     }
 
     public function like($post)
