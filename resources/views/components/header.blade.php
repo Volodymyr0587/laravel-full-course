@@ -13,14 +13,15 @@
                     </li>
                 </ul>
             </div>
-            <div>
+            <div class="px-4">
                 <ul class="flex space-x-4">
                     <li>
                         <a href="{{ route('register') }}"
                             class="{{ request()->is('register') ? 'bg-cyan-400 font-bold text-emerald-900 p-2 rounded-2xl' : 'font-bold text-emerald-900 hover:text-cyan-400' }}">Registration</a>
                     </li>
                     <li>
-                        <a href="{{ route('login') }}" class="{{ request()->is('login') ? 'bg-cyan-400 font-bold text-emerald-900 p-2 rounded-2xl' : 'font-bold text-emerald-900 hover:text-cyan-400' }}">Login</a>
+                        <a href="{{ route('login') }}"
+                            class="{{ request()->is('login') ? 'bg-cyan-400 font-bold text-emerald-900 p-2 rounded-2xl' : 'font-bold text-emerald-900 hover:text-cyan-400' }}">Login</a>
                     </li>
                 </ul>
             </div>

@@ -1,7 +1,8 @@
 @extends('layouts.layout')
 
+@section('page.title', $post->title)
 @section('content')
 
-    <x-show />
+    <x-show :post=$post/>
 
 @endsection

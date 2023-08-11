@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <x-posts />
+    <x-posts :posts=$posts/>
 
 @endsection
