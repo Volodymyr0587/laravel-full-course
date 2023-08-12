@@ -5,13 +5,16 @@
         <x-form-header>
             {{ __('Login') }}
         </x-form-header>
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+        <x-form>
+
             <div class="mb-4">
                 <x-form-label for="email">
                     {{ __('Email') }}
                 </x-form-label>
                 <x-form-input name="email" id="email" type="email" placeholder="Email" autofocus></x-form-input>
             </div>
+
             <div class="mb-6">
                 <x-form-label for="password">
                     {{ __('Password') }}
@@ -31,7 +34,9 @@
                     {{ __('Register') }}
                 </a>
             </div>
-        </form>
+
+        </x-form>
+
     </div>
 
 </main>
