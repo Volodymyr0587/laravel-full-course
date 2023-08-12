@@ -8,20 +8,20 @@
 
         <x-form action="{{ route('login.store') }}" method="POST">
 
-            <div class="mb-4">
+            <x-form-input-block>
                 <x-form-label for="email">
                     {{ __('Email') }}
                 </x-form-label>
                 <x-form-input name="email" id="email" type="email" placeholder="Email" autofocus />
-            </div>
+            </x-form-input-block>
 
-            <div class="mb-6">
+            <x-form-input-block>
                 <x-form-label for="password">
                     {{ __('Password') }}
                 </x-form-label>
                 <x-form-input name="password" id="password" type="password" placeholder="******************" />
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
-            </div>
+            </x-form-input-block>
 
             <x-remember-me name="remember" id="remember" type="checkbox" value="">
                 {{ __('Remeber Me') }}

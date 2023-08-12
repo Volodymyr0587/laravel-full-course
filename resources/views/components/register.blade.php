@@ -7,24 +7,40 @@
 
         <x-form>
 
-            <div class="mb-4">
+            <x-form-input-block>
                 <x-form-label for="email">
                     {{ __('Email') }}
                 </x-form-label>
                 <x-form-input name="email" id="email" type="email" placeholder="Email" autofocus></x-form-input>
-            </div>
+            </x-form-input-block>
 
-            <div class="mb-6">
+            <x-form-input-block>
+                <x-form-label for="name">
+                    {{ __('Name') }}
+                </x-form-label>
+                <x-form-input name="name" id="name" type="text" placeholder="Name"></x-form-input>
+            </x-form-input-block>
+
+            <x-form-input-block>
                 <x-form-label for="password">
                     {{ __('Password') }}
                 </x-form-label>
                 <x-form-input name="password" id="password" type="password"
                     placeholder="******************"></x-form-input>
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
-            </div>
+            </x-form-input-block>
 
-            <x-remember-me name="remember" id="remember" type="checkbox" value="">
-                {{ __('Remeber Me') }}
+            <x-form-input-block>
+                <x-form-label for="password">
+                    {{ __('Confirm password') }}
+                </x-form-label>
+                <x-form-input name="password_confirmation" id="password_confirmation" type="password"
+                    placeholder="******************"></x-form-input>
+                {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
+            </x-form-input-block>
+
+            <x-remember-me name="agreement" id="agreement" type="checkbox" value="">
+                {{ __('I agree to the processing of personal data') }}
             </x-remember-me>
 
             <x-form-buttons-block>
