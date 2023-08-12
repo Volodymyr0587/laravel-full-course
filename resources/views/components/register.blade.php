@@ -28,7 +28,7 @@
             </x-remember-me>
 
             <x-form-buttons-block>
-                <x-button>
+                <x-button type="submit" class="">
                     {{ __('Register') }}
                 </x-button>
                 <x-form-login-register-link href="{{ route('login') }}">
