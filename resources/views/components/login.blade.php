@@ -12,18 +12,20 @@
                 <x-form-label for="email">
                     {{ __('Email') }}
                 </x-form-label>
-                <x-form-input name="email" id="email" type="email" placeholder="Email" autofocus></x-form-input>
+                <x-form-input name="email" id="email" type="email" placeholder="Email" autofocus />
             </div>
 
             <div class="mb-6">
                 <x-form-label for="password">
                     {{ __('Password') }}
                 </x-form-label>
-                <x-form-input name="password" id="password" type="password" placeholder="******************"></x-form-input>
+                <x-form-input name="password" id="password" type="password" placeholder="******************" />
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
             </div>
 
-            <x-remember-me />
+            <x-remember-me name="remember" id="remember" type="checkbox" value="">
+                {{ __('Remeber Me') }}
+            </x-remember-me>
 
             <x-form-buttons-block>
                 <x-button>
