@@ -20,7 +20,7 @@
                     <li>
                         <a href="{{ route('register') }}"
                             class="{{ request()->is('register') ? 'bg-cyan-400 font-bold text-emerald-900 p-2 rounded-2xl' : 'font-bold text-emerald-900 hover:text-cyan-400' }}">
-                            {{ __('Registration') }}
+                            {{ __('Register') }}
                         </a>
                     </li>
                     <li>
