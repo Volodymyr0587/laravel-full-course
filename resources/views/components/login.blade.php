@@ -6,7 +6,7 @@
             {{ __('Login') }}
         </x-form-header>
 
-        <x-form>
+        <x-form action="{{ route('login.store') }}" method="POST">
 
             <div class="mb-4">
                 <x-form-label for="email">
@@ -25,15 +25,14 @@
 
             <x-remember-me />
 
-            <div class="flex items-center justify-between">
+            <x-form-buttons-block>
                 <x-button>
                     {{ __('Sign In') }}
                 </x-button>
-                <a href="{{ route('register') }}"
-                    class="inline-block align-baseline font-bold text-sm text-emerald-900 hover:text-cyan-400">
+                <x-form-login-register-link href="{{ route('register') }}">
                     {{ __('Register') }}
-                </a>
-            </div>
+                </x-form-login-register-link>
+            </x-form-buttons-block>
 
         </x-form>
 

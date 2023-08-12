@@ -25,15 +25,14 @@
 
             <x-remember-me />
 
-            <div class="flex items-center justify-between">
+            <x-form-buttons-block>
                 <x-button>
                     {{ __('Register') }}
                 </x-button>
-                <a href="{{ route('login') }}"
-                    class="inline-block align-baseline font-bold text-sm text-emerald-900 hover:text-cyan-400">
+                <x-form-login-register-link href="{{ route('login') }}">
                     {{ __('Login') }}
-                </a>
-            </div>
+                </x-form-login-register-link>
+            </x-form-buttons-block>
 
         </x-form>
 
