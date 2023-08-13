@@ -14,16 +14,16 @@
                     <p>
                         {{ $post->body }}
                     </p>
-                    <p>
-                        {{ $post->created_at }}
-                    </p>
-                    <p>
-                        {{ $post->updated_at }}
-                    </p>
+                    <x-time-stamp>
+                        Created {{ $post->created_at }}
+                    </x-time-stamp>
+                    <x-time-stamp>
+                        Updated {{ $post->updated_at }}
+                    </x-time-stamp>
                 </div>
             @endforeach
         @else
-            <p>No posts yet</p>
+            <p>{{ __('No posts yet') }}</p>
         @endif
     </div>
 </main>
