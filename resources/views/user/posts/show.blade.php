@@ -10,17 +10,21 @@
 
             <div class="mb-4">
 
-                <a href="{{ route('user.posts.show', $post->id) }}" class="text-blue-500 hover:text-blue-300">
-                    <h4 class="text-lg">{{ $post->title }}</h4>
-                </a>
 
-                <x-time-stamp>
-                    Created {{ $post->created_at }}
-                </x-time-stamp>
-                <x-time-stamp>
-                    Updated {{ $post->updated_at }}
-                </x-time-stamp>
+                <h4 class="text-xl">{{ $post->title }}</h4>
 
+                <div class="flex space-x-2 ml-10">
+                    <x-time-stamp>
+                        Created <i><b>{{ $post->created_at }}</b></i>
+                    </x-time-stamp>
+                    <x-time-stamp>
+                        Updated <i><b>{{ $post->updated_at }}</b></i>
+                    </x-time-stamp>
+                </div>
+
+                <x-post-body>
+                    {{ $post->body }}
+                </x-post-body>
             </div>
 
         </div>

@@ -1,6 +1,6 @@
-<header class="py-3 w-full border-b-2 lg:flex justify-between">
+<header class="py-3 w-full border-b-2 ">
     <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between lg:flex lg:justify-between">
             <div class="px-4">
                 <ul class="flex space-x-4">
                     <li>

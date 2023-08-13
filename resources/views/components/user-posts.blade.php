@@ -1,7 +1,14 @@
 @section('page.title', 'My Posts')
 
 <main class="py-3">
-    <x-title>{{ __('My Posts') }}</x-title>
+    <x-title>
+
+        {{ __('My Posts') }}
+
+        <x-slot name="right">
+            <x-button>New post</x-button>
+        </x-slot>
+    </x-title>
 
     <div class="mt-10">
         @if ($posts)
