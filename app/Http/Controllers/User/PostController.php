@@ -26,7 +26,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('user.posts.index');
+        return view('user.posts.create');
     }
 
     public function store()
@@ -49,10 +49,18 @@ class PostController extends Controller
 
     public function edit($post)
     {
-        return view('user.posts.index', compact('post'));
+        $post = (object) [
+            'id' => rand(1, 100),
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
+            'created_at' => Carbon::now()->diffForHumans(),
+            'updated_at' => Carbon::now()->diffForHumans()
+        ];
+
+        return view('user.posts.edit', compact('post'));
     }
 
-    public function update()
+    public function update($post)
     {
         return 'Update post';
     }

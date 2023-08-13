@@ -6,7 +6,13 @@
     <main class="py-3">
         <x-title>{{ __('View Post') }}
             <div class="m-0 p-0">
-                <a href="{{ route('user.posts') }}" class="text-sm text-blue-500">< - Back</a>
+                <a href="{{ route('user.posts') }}" class="text-sm text-blue-500">
+                    {{ __('Back') }}
+                </a>
+
+                <x-button-link href="{{ route('user.posts.edit', $post->id) }}" class="text-sm ml-4">
+                    {{ __('Edit') }}
+                </x-button-link>
             </div>
         </x-title>
 

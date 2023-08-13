@@ -6,7 +6,7 @@
         {{ __('My Posts') }}
 
         <x-slot name="right">
-            <x-button>New post</x-button>
+            <x-button-link href="{{ route('user.posts.create') }}">New post</x-button-link>
         </x-slot>
     </x-title>
 
