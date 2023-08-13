@@ -1,4 +1,4 @@
-<header class="py-3 w-full border-b-2">
+<header class="py-3 w-full border-b-2 lg:flex justify-between">
     <div>
         <div class="flex justify-between">
             <div class="px-4">
