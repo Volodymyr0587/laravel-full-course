@@ -11,9 +11,9 @@
                         <h4 class="text-lg">{{ $post->title }}</h4>
                     </a>
 
-                    <p>
+                    <x-post-body>
                         {{ $post->body }}
-                    </p>
+                    </x-post-body>
                     <x-time-stamp>
                         Created {{ $post->created_at }}
                     </x-time-stamp>

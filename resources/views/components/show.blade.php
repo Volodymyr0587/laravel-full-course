@@ -3,7 +3,7 @@
 
     <x-title>{{ $post->title }}</x-title>
 
-    <div class="mt-10">
+    <x-post-body>
         {{ $post->body }}
-    </div>
+    </x-post-body>
 </main>
