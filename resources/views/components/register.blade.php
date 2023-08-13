@@ -5,7 +5,7 @@
             {{ __('Register') }}
         </x-form-header>
 
-        <x-form>
+        <x-form action="{{ route('register.store') }}" method="POST">
 
             <x-form-input-block>
                 <x-form-label for="email">

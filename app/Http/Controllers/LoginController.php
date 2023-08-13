@@ -20,6 +20,6 @@ class LoginController extends Controller
 
     public function store()
     {
-        return "Store user in DB";
+        return "Login user";
     }
 }
