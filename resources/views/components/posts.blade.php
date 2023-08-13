@@ -1,7 +1,7 @@
 <main class="py-3">
     <x-title>Posts list</x-title>
 
-    <div class="mt-10">
+    <div class="mt-10 grid grid-cols-2 lg:grid-cols-3">
         @if ($posts)
             @foreach ($posts as $post)
                 <div class="mb-4">
