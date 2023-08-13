@@ -9,7 +9,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('blog') }}" class="{{ active_link('blog') }}">
+                        <a href="{{ route('blog') }}" class="{{ active_link('blog*') }}">
                             {{ __('Posts') }}
                         </a>
                     </li>
