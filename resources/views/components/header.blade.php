@@ -1,5 +1,5 @@
 <header class="py-3 w-full border-b-2">
-    <div class="container">
+    <div>
         <div class="flex justify-between">
             <div class="px-4">
                 <ul class="flex space-x-4">
