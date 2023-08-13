@@ -3,3 +3,7 @@
 
     {{ $slot }}
 </form>
+
+{{-- @isset($right)
+    {{ $right }}
+@endisset --}}

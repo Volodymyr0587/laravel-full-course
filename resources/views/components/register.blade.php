@@ -51,7 +51,9 @@
                     {{ __('Login') }}
                 </x-form-login-register-link>
             </x-form-buttons-block>
-
+            {{-- <x-slot name="right">
+                {{ __('X-SLOT') }}
+            </x-slot> --}}
         </x-form>
 
     </div>
