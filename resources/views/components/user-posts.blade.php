@@ -1,5 +1,7 @@
+@section('page.title', 'My Posts')
+
 <main class="py-3">
-    <x-title>My Posts</x-title>
+    <x-title>{{ __('My Posts') }}</x-title>
 
     <div class="mt-10">
         @if ($posts)

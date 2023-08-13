@@ -36,7 +36,15 @@ class PostController extends Controller
 
     public function show($post)
     {
-        return view('user.posts.index', compact('post'));
+        $post = (object) [
+            'id' => rand(1, 100),
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
+            'created_at' => Carbon::now()->diffForHumans(),
+            'updated_at' => Carbon::now()->diffForHumans()
+        ];
+
+        return view('user.posts.show', compact('post'));
     }
 
     public function edit($post)
