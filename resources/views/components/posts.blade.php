@@ -1,5 +1,5 @@
-<main>
-    <h1 class="text-2xl font-bold">Posts list</h1>
+<main class="py-3">
+    <x-title>Posts list</x-title>
 
     <div class="mt-10">
         @if ($posts)
