@@ -11,3 +11,5 @@
         </div>
     @endisset
 </div>
+
+<x-search />

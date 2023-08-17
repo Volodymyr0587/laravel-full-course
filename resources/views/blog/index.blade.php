@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <x-posts :posts=$posts/>
+    <x-posts :posts=$posts :options=$categories />
 
 @endsection
