@@ -39,7 +39,7 @@
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
             </x-form.form-input-block>
 
-            <x-form.remember-me name="agreement" id="agreement" type="checkbox" value="">
+            <x-form.remember-me name="agreement" id="agreement" type="checkbox" value=true>
                 {{ __('I agree to the processing of personal data') }}
             </x-form.remember-me>
 
