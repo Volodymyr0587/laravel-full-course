@@ -66,8 +66,13 @@ class PostController extends Controller
         return view('user.posts.edit', compact('post'));
     }
 
-    public function update($post)
+    public function update(Request $request)
     {
+        $title = $request->title;
+        $body = $request->body;
+
+        dd($title, $body);
+
         return 'Update post';
     }
 
