@@ -23,7 +23,7 @@
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
             </x-form.form-input-block>
 
-            <x-form.remember-me name="remember" id="remember" type="checkbox" value="">
+            <x-form.remember-me name="remember" id="remember" type="checkbox" value=true>
                 {{ __('Remeber Me') }}
             </x-form.remember-me>
 

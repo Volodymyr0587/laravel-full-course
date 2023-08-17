@@ -18,14 +18,35 @@ class RegisterController extends Controller
         // $data = $request->except(['name', 'password']);
         // dd($data);
 
-        $name = $request->input('name');
-        // $email = $request->email;
-        $email = $request->input('email');
+        // $name = $request->input('name');
+        // // $email = $request->email;
+        // $email = $request->input('email');
 
-        // $agreement = !! $request->agreement;
+        // // $agreement = !! $request->agreement;
+        // $agreement = $request->boolean('agreement');
+        // dd($agreement);
+
+        // $avatar = $request->file('avatar');
+
+        // dd($name, $email, $agreement, $avatar);
+
+        // dd($request->has('name'), $request->has('agreement'));
+
+        // dd($request->filled('name'));
+
+        // dd($request->missing('name'));
+
+        // if ($name = $request->name) {
+        //     $name = strtoupper($name);
+        // }
+
+
+        $name = $request->name;
+        $email = $request->email;
+        $password = $request->password;
         $agreement = $request->boolean('agreement');
 
-        dd($name, $email, $agreement);
+        dd($name, $email, $password, $agreement);
 
         return "Register new user";
     }

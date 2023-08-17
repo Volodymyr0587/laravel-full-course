@@ -18,8 +18,14 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $email = $request->email;
+        $password = $request->password;
+        $remember = $request->boolean('remember');
+
+        dd($email, $password, $remember);
+
         return "Login user";
     }
 }
