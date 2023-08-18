@@ -40,6 +40,10 @@ class LoginController extends Controller
 
         // return response()->redirectToRoute('user');
         // return back()->withInput();
-        return redirect('user');
+        // return redirect('user');
+
+        if (true) {
+            return back()->withInput();
+        }
     }
 }
