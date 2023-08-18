@@ -31,7 +31,7 @@ class TestController extends Controller
 
         // return ['foo' => 'bar'];
 
-        // return response()->json(['foo' => 'bar']);
+        return response()->json(['foo' => 'bar']);
 
     }
 }

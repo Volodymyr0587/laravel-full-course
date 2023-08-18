@@ -32,8 +32,14 @@ class LoginController extends Controller
         $password = $request->password;
         $remember = $request->boolean('remember');
 
-        dd($email, $password, $remember);
+        // dd($email, $password, $remember);
 
-        return "Login user";
+        // return "Login user";
+
+        // return response()->redirectTo('/foo');
+
+        // return response()->redirectToRoute('user');
+
+        return redirect('user');
     }
 }

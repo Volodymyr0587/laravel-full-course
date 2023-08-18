@@ -46,8 +46,10 @@ class RegisterController extends Controller
         $password = $request->password;
         $agreement = $request->boolean('agreement');
 
-        dd($name, $email, $password, $agreement);
+        // dd($name, $email, $password, $agreement);
 
-        return "Register new user";
+        // return "Register new user";
+
+        return redirect('user');
     }
 }
