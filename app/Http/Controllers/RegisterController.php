@@ -50,6 +50,10 @@ class RegisterController extends Controller
 
         // return "Register new user";
 
-        return redirect('user');
+        // return redirect('user');
+
+        if (true) {
+            return back()->withInput();
+        }
     }
 }

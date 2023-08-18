@@ -39,7 +39,7 @@ class LoginController extends Controller
         // return response()->redirectTo('/foo');
 
         // return response()->redirectToRoute('user');
-
+        // return back()->withInput();
         return redirect('user');
     }
 }
