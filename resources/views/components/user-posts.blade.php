@@ -1,6 +1,9 @@
 @section('page.title', 'My Posts')
 
 <main class="py-3">
+
+    <x-search />
+
     <x-title>
 
         {{ __('My Posts') }}

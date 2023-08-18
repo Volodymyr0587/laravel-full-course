@@ -1,4 +1,7 @@
 <main class="py-3">
+
+    <x-search />
+
     <x-title>Posts list</x-title>
 
     <div class="mt-10 grid grid-cols-2 lg:grid-cols-3">

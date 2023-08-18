@@ -12,4 +12,4 @@
     @endisset
 </div>
 
-<x-search />
+{{-- <x-search /> --}}
