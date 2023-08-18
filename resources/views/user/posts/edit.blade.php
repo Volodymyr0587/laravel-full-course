@@ -30,7 +30,7 @@
 
                 <x-form.form-buttons-block>
                     <x-button type="submit" class="">
-                        {{ __('Store') }}
+                        {{ __('Save') }}
                     </x-button>
                     <x-form.form-login-register-link href="{{ route('user.posts.show', $post->id) }}">
                         {{ __('Cancel') }}

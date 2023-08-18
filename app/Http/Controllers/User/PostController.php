@@ -73,7 +73,9 @@ class PostController extends Controller
 
         // dd($title, $body);
 
-        return redirect()->route('user.posts.show', $post);
+        // return redirect()->route('user.posts.show', $post);
+
+        return redirect()->back(); // or just `return back();`
     }
 
     public function destroy($post)
