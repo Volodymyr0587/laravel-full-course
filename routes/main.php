@@ -18,7 +18,8 @@ Route::view('/', 'home.index')->name('home');
 Route::redirect('/home', '/')->name('home.redirect');
 
 
-Route::get('/test', TestController::class)->middleware('token:secret', 'throttle:10')->name('test');
+// Route::get('/test', TestController::class)->middleware('token:secret', 'throttle:10')->name('test');
+Route::get('/test', TestController::class)->name('test');
 
 // Registration and Login
 Route::middleware('guest')->group(function () {
