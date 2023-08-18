@@ -12,7 +12,7 @@
                 <x-form.form-label for="email">
                     {{ __('Email') }}
                 </x-form.form-label>
-                <x-form.form-input name="email" id="email" type="email" placeholder="Email" value="{{ old('email') }}" autofocus />
+                <x-form.form-input name="email" id="email" type="email" placeholder="Email"  autofocus />
             </x-form.form-input-block>
 
             <x-form.form-input-block>

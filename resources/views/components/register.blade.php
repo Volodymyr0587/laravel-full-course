@@ -11,14 +11,14 @@
                 <x-form.form-label for="email">
                     {{ __('Email') }}
                 </x-form.form-label>
-                <x-form.form-input name="email" id="email" type="email" placeholder="Email" value="{{ old('email') }}" autofocus></x-form.form-input>
+                <x-form.form-input name="email" id="email" type="email" placeholder="Email"  autofocus></x-form.form-input>
             </x-form.form-input-block>
 
             <x-form.form-input-block>
                 <x-form.form-label for="name">
                     {{ __('Name') }}
                 </x-form.form-label>
-                <x-form.form-input name="name" id="name" type="text" placeholder="Name" value="{{ old('name') }}"></x-form.form-input>
+                <x-form.form-input name="name" id="name" type="text" placeholder="Name"></x-form.form-input>
             </x-form.form-input-block>
 
             <x-form.form-input-block>
