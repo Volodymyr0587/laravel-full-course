@@ -16,6 +16,13 @@ class LoginController extends Controller
 
         // return View::make('login.index');
 
+        // $foo = session()->get('foo');
+        // $foo = session('foo');
+        // dd($foo);
+
+        // dd(session()->has('test'));
+        dd(session()->all());
+
         return view('login.index');
     }
 
@@ -23,11 +30,21 @@ class LoginController extends Controller
     {
         // $session = app()->make('session');
         // $session = app('session');
-        $session = session();
+        // $session = session();
         // $session = Session::get('key');
 
+        // session()->put('foo', 'bar');
 
-        dd($session);
+        // session([
+        //     'foo' => 'Bar',
+        //     'name' => 'Volodymyr'
+        // ]);
+
+        // dd($session);
+
+        // DELETE DATA FROM SESSION
+        // session()->forget('foo');
+        session()->flush();
 
         // $ip = $request->ip();
         // $path = $request->path();
