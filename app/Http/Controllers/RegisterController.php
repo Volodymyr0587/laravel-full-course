@@ -52,8 +52,10 @@ class RegisterController extends Controller
 
         // return redirect('user');
 
-        if (true) {
-            return back()->withInput();
-        }
+        // if (true) {
+        //     return back()->withInput();
+        // }
+
+        return redirect()->route('user.posts')->with('success', 'You have successfully registered');
     }
 }

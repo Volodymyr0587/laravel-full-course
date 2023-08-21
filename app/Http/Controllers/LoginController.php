@@ -21,7 +21,7 @@ class LoginController extends Controller
         // dd($foo);
 
         // dd(session()->has('test'));
-        dd(session()->all());
+        // dd(session()->all());
 
         return view('login.index');
     }
@@ -44,7 +44,7 @@ class LoginController extends Controller
 
         // DELETE DATA FROM SESSION
         // session()->forget('foo');
-        session()->flush();
+        // session()->flush();
 
         // $ip = $request->ip();
         // $path = $request->path();
@@ -65,11 +65,13 @@ class LoginController extends Controller
         // return response()->redirectTo('/foo');
 
         // return response()->redirectToRoute('user');
-        // return back()->withInput();
-        // return redirect('user');
+        // return back()->withInput()->with('success', 'You have successfully logged in');
 
-        if (true) {
-            return back()->withInput();
-        }
+        return redirect()->route('user.posts')->with('success', 'You have successfully logged in');
+
+
+        // if (true) {
+        //     return back()->withInput();
+        // }
     }
 }

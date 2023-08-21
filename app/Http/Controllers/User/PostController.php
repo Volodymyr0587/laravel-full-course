@@ -37,7 +37,7 @@ class PostController extends Controller
 
         // dd($title, $body);
 
-        return redirect()->route('user.posts.show', 123);
+        return redirect()->route('user.posts.show', 123)->with('success', 'New post has been created');
     }
 
     public function show($post)
@@ -75,12 +75,12 @@ class PostController extends Controller
 
         // return redirect()->route('user.posts.show', $post);
 
-        return redirect()->back(); // or just `return back();`
+        return redirect()->route('user.posts.show', 123)->with('success', 'The post has been updated successfully'); // or just `return back();`
     }
 
     public function destroy($post)
     {
-        return redirect()->route('user.posts');
+        return redirect()->route('user.posts')->with('delete', 'Post deleted successfully');
     }
 
     public function like()

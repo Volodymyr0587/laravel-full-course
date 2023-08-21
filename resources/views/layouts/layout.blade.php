@@ -15,7 +15,10 @@
     <div class="flex flex-col items-center justify-between min-h-screen text-center">
 
         {{-- @include('components.header') --}}
+
         <x-header />
+
+        <x-flash.flash />
 
         <main class="flex grow py-3">
 
