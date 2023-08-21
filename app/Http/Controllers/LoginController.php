@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class LoginController extends Controller
@@ -20,6 +21,14 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
+        // $session = app()->make('session');
+        // $session = app('session');
+        $session = session();
+        // $session = Session::get('key');
+
+
+        dd($session);
+
         // $ip = $request->ip();
         // $path = $request->path();
         // $url = $request->url();
