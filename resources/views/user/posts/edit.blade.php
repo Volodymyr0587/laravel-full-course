@@ -17,6 +17,9 @@
                         {{ __('Post title') }}
                     </x-form.form-label>
                     <x-form.form-input name="title" id="title" type="text" placeholder="Title" value="{{ $post->title ?? '' }}"/>
+
+                    <x-error name="title" />
+
                 </x-form.form-input-block>
 
                 <x-form.form-input-block>
@@ -24,7 +27,9 @@
                         {{ __('Post Body') }}
                     </x-form.form-label>
                     <x-form.textarea name="body" id="body" type="text" placeholder="Post something" rows="10">{{ $post->body }}</x-form.textarea>
-                    {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
+
+                    <x-error name="body" />
+
                 </x-form.form-input-block>
 
 

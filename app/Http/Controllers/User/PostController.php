@@ -103,10 +103,12 @@ class PostController extends Controller
 
     public function update(Request $request, $post)
     {
-        $title = $request->title;
-        $body = $request->body;
+        $data = data_validate($request->all(), [
+            'title' => ['required', 'string', 'max:256'],
+            'body' => ['required', 'string', 'max:10000'],
+        ]);
 
-        // dd($title, $body);
+        dd($data);
 
         // return redirect()->route('user.posts.show', $post);
 
