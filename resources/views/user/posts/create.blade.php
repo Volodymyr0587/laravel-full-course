@@ -23,7 +23,9 @@
                     <x-form.form-label>
                         {{ __('Post Body') }}
                     </x-form.form-label>
-                    <x-form.textarea name="body" id="body" type="text" placeholder="Post something" rows="10" />
+                    <x-form.textarea name="body" id="body" type="text" placeholder="Post something" rows="10">
+                        {{ old('body') }}
+                    </x-form.textarea>
                     {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
                 </x-form.form-input-block>
 
