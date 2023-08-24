@@ -31,11 +31,13 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:256'],
+            'body' => ['required', 'string', 'max:10000'],
+        ]);
 
-        $title = $request->title;
-        $body = $request->body;
+        dd($data);
 
-        // dd($title, $body);
 
         return redirect()->route('user.posts.show', 123)->with('success', 'New post has been created');
     }
