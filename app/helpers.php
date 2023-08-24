@@ -8,8 +8,8 @@ if (! function_exists('active_link')) {
 }
 
 
-if (! function_exists('post_data_validate')) {
-    function post_data_validate(array $attributes, array $rules)
+if (! function_exists('data_validate')) {
+    function data_validate(array $attributes, array $rules)
     {
         return validator($attributes, $rules)->validate();
     }

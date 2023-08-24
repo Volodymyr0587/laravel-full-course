@@ -55,7 +55,7 @@ class PostController extends Controller
         // dd($data);
 
         //? 4th WAY (own validation helper function):
-        $data = post_data_validate($request->all(), [
+        $data = data_validate($request->all(), [
             'title' => ['required', 'string', 'max:256'],
             'body' => ['required', 'string', 'max:10000'],
         ]);
