@@ -167,6 +167,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'title' => [
+            'required' => 'Будь ласка, заповніть поле заголовка'
+        ],
     ],
 
     /*
