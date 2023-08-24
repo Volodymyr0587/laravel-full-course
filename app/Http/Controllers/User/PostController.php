@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Requests\Post\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StorePostRequest;
+use Illuminate\Validation\ValidationException;
 
 class PostController extends Controller
 {
@@ -60,6 +61,12 @@ class PostController extends Controller
             'body' => ['required', 'string', 'max:10000'],
         ]);
 
+
+        // if (true) {
+        //     throw ValidationException::withMessages([
+        //         'account' => __('Недостатньо коштів'),
+        //     ]);
+        // }
         dd($data);
 
 

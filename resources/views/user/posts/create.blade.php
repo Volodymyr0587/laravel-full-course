@@ -32,10 +32,9 @@
 
                     <x-error name="body" />
 
-
+                    {{-- <x-error name="account" /> --}}
 
                 </x-form.form-input-block>
-
 
                 <x-form.form-buttons-block>
                     <x-button type="submit" class="">
