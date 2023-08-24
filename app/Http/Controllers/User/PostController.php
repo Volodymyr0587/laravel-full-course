@@ -31,20 +31,39 @@ class PostController extends Controller
         return view('user.posts.create');
     }
 
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
+        //? 1st WAY:
         // $data = $request->validate([
         //     'title' => ['required', 'string', 'max:256'],
         //     'body' => ['required', 'string', 'max:10000'],
         // ]);
 
-        // Post::create($data);
+        // dd($data);
+
+        //? 2nd WAY (global validator function):
+        // $data = validator($request->all(), [
+        //     'title' => ['required', 'string', 'max:256'],
+        //     'body' => ['required', 'string', 'max:10000'],
+        // ])->validate();
 
         // dd($data);
 
-        $data = $request->validated();
+        //? 3rd WAY:
+        // $data = $request->validated(); //! USE StorePostRequest class
+
+        // dd($data);
+
+        //? 4th WAY (own validation helper function):
+        $data = post_data_validate($request->all(), [
+            'title' => ['required', 'string', 'max:256'],
+            'body' => ['required', 'string', 'max:10000'],
+        ]);
 
         dd($data);
+
+
+         // Post::create($data);
 
         return redirect()->route('user.posts.show', 123)->with('success', 'New post has been created');
     }
