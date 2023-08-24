@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\Post\StorePostRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -29,15 +31,20 @@ class PostController extends Controller
         return view('user.posts.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $data = $request->validate([
-            'title' => ['required', 'string', 'max:256'],
-            'body' => ['required', 'string', 'max:10000'],
-        ]);
+        // $data = $request->validate([
+        //     'title' => ['required', 'string', 'max:256'],
+        //     'body' => ['required', 'string', 'max:10000'],
+        // ]);
+
+        // Post::create($data);
+
+        // dd($data);
+
+        $data = $request->validated();
 
         dd($data);
-
 
         return redirect()->route('user.posts.show', 123)->with('success', 'New post has been created');
     }
