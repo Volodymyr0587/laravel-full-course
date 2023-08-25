@@ -14,6 +14,8 @@ class Phone implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        //
+        if (! str_starts_with($value, '+380')) {
+            $fail(':attribute must be Ukrainian phone number +380...');
+        }
     }
 }

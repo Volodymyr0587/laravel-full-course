@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -27,8 +28,8 @@ class ValidationController extends Controller
             'email' => ['required', 'string', 'email', 'exists:user,email'], // mail@example.com
             'country_id' => ['required', 'integer', 'exists:coutries,id'],
             // 'country_id' => ['required', 'integer', Rule::exists('countries', 'id')->where('active', true)],
-            'phone' => ['required', 'string', 'unique:users,phone'],
-            'phone' => ['required', 'string', new Phone, Rule::unique('users', 'phone')->ignore($user)],
+            // 'phone' => ['required', 'string', 'unique:users,phone'],
+            'phone' => ['required', 'string', 'digits_between:10,20', new Phone, Rule::unique('users', 'phone')->ignore($user)],
             'website' => ['nullable', 'string', 'url'], // https:://example.com
             'uuid' => ['nullable', 'string', 'uuid'], //sdfsdf-sdfsdf-sdfsdf-sdfsdf
             'ip' => ['nullable', 'string', 'ip'], // 127.0.0.1
@@ -36,7 +37,7 @@ class ValidationController extends Controller
             'birth_date' => ['nullable', 'string', 'date'], // 2023-08-25 / 25-08-2023 17:07:07
             'start_date' => ['required', 'string', 'date', 'after_or_equal:today'],
             'finish_date' => ['required', 'string', 'date', 'after:start_date'],
-            'delivery' =>
+
 
         ]);
 
