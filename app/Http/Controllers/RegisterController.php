@@ -66,14 +66,14 @@ class RegisterController extends Controller
 
         $user = new User;
 
-        $user->name = $validated['name'];
+        $user->name = $validated['name']; // $user->setAttribute('name', $validated['name']);
         $user->email = $validated['email'];
         // $user->password = bcrypt($validated['password']);
         $user->password = $validated['password']; // hashed at User model in property $casts
 
         $user->save();
 
-        dd($user);
+        dd($user->toArray());
 
         return redirect()->route('user.posts')->with('success', 'You have successfully registered');
     }
