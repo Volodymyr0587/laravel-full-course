@@ -64,14 +64,43 @@ class RegisterController extends Controller
             'agreement' => ['accepted'],
         ]);
 
-        $user = new User;
+        //? 1st METHOD
+        // $user = new User;
 
-        $user->name = $validated['name']; // $user->setAttribute('name', $validated['name']);
-        $user->email = $validated['email'];
-        // $user->password = bcrypt($validated['password']);
-        $user->password = $validated['password']; // hashed at User model in property $casts
+        // $user->name = $validated['name']; // $user->setAttribute('name', $validated['name']);
+        // $user->email = $validated['email'];
+        // // $user->password = bcrypt($validated['password']);
+        // $user->password = $validated['password']; // hashed at User model in property $casts
+
+        // $user->save();
+
+        // dd(User::query());
+        //? 2nd METHOD
+        // $user = User::create([
+        //     'name' => $validated['name'],
+        //     'email' => $validated['email'],
+        //     'password' => $validated['password'],
+        // ]);
+
+        //* 2nd method (short way)
+        //$user = User::create($validated);
+
+        //? 3rd METHOD
+
+        $user = User::query()->create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+        ]);
 
         $user->save();
+
+        //* ALL METHODS
+        // $user = new User(['name' => $validated['name']]);
+        // $user->fill(['email' => $validated['email']]);
+        // $user->setAttribute('password', $validated['password']);
+        // $user->admin = true;
+        // $user->foo = 'bar';
 
         dd($user->toArray());
 
