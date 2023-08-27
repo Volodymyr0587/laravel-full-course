@@ -102,8 +102,8 @@ class RegisterController extends Controller
         // $user->admin = true;
         // $user->foo = 'bar';
 
-        dd($user->toArray());
+        // dd($user->toArray());
 
-        return redirect()->route('user.posts')->with('success', 'You have successfully registered');
+        return redirect()->route('user')->with('success', 'You have successfully registered');
     }
 }
