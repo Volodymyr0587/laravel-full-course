@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -40,11 +41,10 @@ class RegisterController extends Controller
         //     $name = strtoupper($name);
         // }
 
-
-        $name = $request->name;
-        $email = $request->email;
-        $password = $request->password;
-        $agreement = $request->boolean('agreement');
+        // $name = $request->name;
+        // $email = $request->email;
+        // $password = $request->password;
+        // $agreement = $request->boolean('agreement');
 
         // dd($name, $email, $password, $agreement);
 
@@ -55,6 +55,25 @@ class RegisterController extends Controller
         // if (true) {
         //     return back()->withInput();
         // }
+
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'password' => ['required', 'string', 'min:7', 'confirmed'],
+            'agreement' => ['accepted'],
+        ]);
+
+        $user = new User;
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        // $user->password = bcrypt($validated['password']);
+        $user->password = $validated['password']; // hashed at User model in property $casts
+
+        $user->save();
+
+        dd($user);
 
         return redirect()->route('user.posts')->with('success', 'You have successfully registered');
     }
