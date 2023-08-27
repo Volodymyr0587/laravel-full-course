@@ -13,6 +13,7 @@
             <x-form.form action="{{ route('user.posts.store') }}" method="POST">
 
                 <x-form.form-input-block>
+
                     <x-form.form-label required>
                         {{ __('Post title') }}
                     </x-form.form-label>
@@ -23,6 +24,7 @@
                 </x-form.form-input-block>
 
                 <x-form.form-input-block>
+
                     <x-form.form-label>
                         {{ __('Post Body') }}
                     </x-form.form-label>
@@ -35,6 +37,26 @@
                     {{-- <x-error name="account" /> --}}
 
                 </x-form.form-input-block>
+
+
+                <x-form.form-input-block>
+
+                    <x-form.form-label required>
+                        {{ __('Publish date') }}
+                    </x-form.form-label>
+                    <x-form.form-input name="published_at"  placeholder="dd.mm.yyyy" />
+
+                    <x-error name="published_at" />
+
+                </x-form.form-input-block>
+
+                {{-- <x-form.form-input-block>
+
+                    <x-form.remember-me name="is_publish" type="checkbox" value=true :checked="!! old('is_publish')">
+                        {{ __('Published') }}
+                    </x-form.remember-me>
+
+                </x-form.form-input-block> --}}
 
                 <x-form.form-buttons-block>
                     <x-button type="submit" class="">

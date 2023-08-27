@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
@@ -38,14 +39,18 @@ class PostController extends Controller
         // $data = $request->validate([
         //     'title' => ['required', 'string', 'max:256'],
         //     'body' => ['required', 'string', 'max:10000'],
+        //     'published_at' => ['nullable', 'string', 'date'],
+        //     'published' => ['nullable', 'boolean'],
         // ]);
 
-        // dd($data);
+
 
         //? 2nd WAY (global validator function):
         // $data = validator($request->all(), [
         //     'title' => ['required', 'string', 'max:256'],
         //     'body' => ['required', 'string', 'max:10000'],
+        //     'published_at' => ['nullable', 'string', 'date'],
+        //     'published' => ['nullable', 'boolean'],
         // ])->validate();
 
         // dd($data);
@@ -59,6 +64,8 @@ class PostController extends Controller
         $data = data_validate($request->all(), [
             'title' => ['required', 'string', 'max:256'],
             'body' => ['required', 'string', 'max:10000'],
+            'published_at' => ['nullable', 'string', 'date'],
+            // 'is_publish' => ['nullable', 'boolean'],
         ]);
 
 
@@ -67,10 +74,17 @@ class PostController extends Controller
         //         'account' => __('Недостатньо коштів'),
         //     ]);
         // }
-        dd($data);
+        $post = Post::query()->create([
+            'user_id' => User::query()->value('id'),
+            'title' => $data['title'],
+            'body' => $data['body'],
+            'published_at' => $data['published_at'] ?? null,
+            // 'is_publish' => $data['is_publish'] ?? false,
+        ]);
 
+        dd($post->toArray());
 
-         // Post::create($data);
+        // Post::create($data);
 
         return redirect()->route('user.posts.show', 123)->with('success', 'New post has been created');
     }
