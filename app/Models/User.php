@@ -23,6 +23,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $attributes = [
+        'active' => true,
+        'admin' => false
+    ];
+
     protected $fillable = [
         'name', 'email', 'avatar',
         'active', 'password',
