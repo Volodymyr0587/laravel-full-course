@@ -14,6 +14,7 @@
                 </x-form.form-label>
                 <x-form.form-input name="email" id="email" type="email" placeholder="Email"  autofocus />
             </x-form.form-input-block>
+            <x-error name="email"/>
 
             <x-form.form-input-block>
                 <x-form.form-label for="password">
@@ -22,6 +23,7 @@
                 <x-form.form-input name="password" id="password" type="password" placeholder="******************" />
                 {{-- <p class="text-red-500 text-xs italic">Please choose a password.</p> --}}
             </x-form.form-input-block>
+            <x-error name="password"/>
 
             <x-form.remember-me name="remember" id="remember" type="checkbox" value=true :checked="!! old('remember')">
                 {{ __('Remeber Me') }}
