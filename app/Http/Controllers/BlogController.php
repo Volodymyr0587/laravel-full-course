@@ -16,8 +16,8 @@ class BlogController extends Controller
             1 => __('First category'),
             2 => __('Second category')];
 
-        /** @var Post $post */
-        $post = Post::query()->first();
+        // /** @var Post $post */
+        // $post = Post::query()->first();
 
         // dd($post->getAttribute('title'));
 
@@ -25,10 +25,13 @@ class BlogController extends Controller
 
         // $post->title = 'foo'; // __set($key, $value)
 
+        // dd($post->isPublished());
 
-        dd($post->isPublished());
+        // dd($post);
 
-        dd($post);
+        $posts = Post::all(['id', 'title', 'published_at']);
+
+        dd($posts->toArray());
 
         return view('blog.index', compact('posts', 'categories'));
     }
