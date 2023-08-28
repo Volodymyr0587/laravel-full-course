@@ -23,11 +23,11 @@
                     </a>
 
                     <x-time-stamp>
-                        Created {{ $post->created_at }}
+                        Created {{ $post->published_at->diffForHumans() }}
                     </x-time-stamp>
-                    <x-time-stamp>
+                    {{-- <x-time-stamp>
                         Updated {{ $post->updated_at }}
-                    </x-time-stamp>
+                    </x-time-stamp> --}}
 
                 </div>
             @endforeach
@@ -35,4 +35,5 @@
             <p>{{ __('No posts yet') }}</p>
         @endif
     </div>
+    {{ $posts->links('pagination::tailwind') }}
 </main>

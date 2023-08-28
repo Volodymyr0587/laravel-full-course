@@ -14,16 +14,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $post = (object) [
-            'id' => rand(1, 100),
-            'title' => 'Lorem ipsum dolor sit amet.',
-            'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
-            'created_at' => Carbon::now()->diffForHumans(),
-            'updated_at' => Carbon::now()->diffForHumans()
-        ];
-
-        $posts = array_fill(0, 10, $post);
-        // $posts = [];
+        $posts = Post::query()->paginate(10);
 
         return view('user.posts.index', compact('posts'));
     }
