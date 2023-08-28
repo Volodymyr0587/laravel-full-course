@@ -30,4 +30,8 @@
             <p>{{ __('No posts yet') }}</p>
         @endif
     </div>
+
+    {{-- {{ $posts->links('pagination::simple-tailwind') }} --}}
+    {{ $posts->links('pagination::tailwind') }}
+
 </main>

@@ -60,7 +60,10 @@ class BlogController extends Controller
         $offset = $limit * ($page - 1);
 
         $posts = Post::query()->limit($limit)->offset($offset)->get();
+        //? END PAGINATION
 
+        //* BUILD-IN LARAVEL PAGINATION
+        $posts = Post::query()->paginate($limit);
 
         return view('blog.index', compact('posts', 'categories'));
     }
