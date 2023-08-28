@@ -41,7 +41,7 @@ class BlogController extends Controller
         //* select id, title, published_at from posts
         $posts = Post::query()->get(['id', 'title', 'published_at']);
 
-        dd($posts->toArray());
+        // dd($posts->toArray());
 
         return view('blog.index', compact('posts', 'categories'));
     }

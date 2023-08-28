@@ -18,11 +18,12 @@
                         {{ $post->body }}
                     </x-post-body>
                     <x-time-stamp>
-                        Created {{ $post->created_at }}
+                        {{-- {{ $post->published_at->format('d.m.Y H:i:s') }} --}}
+                        {{ $post->published_at->diffForHumans() }}
                     </x-time-stamp>
-                    <x-time-stamp>
+                    {{-- <x-time-stamp>
                         Updated {{ $post->updated_at }}
-                    </x-time-stamp>
+                    </x-time-stamp> --}}
                 </div>
             @endforeach
         @else
