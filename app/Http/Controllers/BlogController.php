@@ -49,6 +49,19 @@ class BlogController extends Controller
         //* select * from posts limit 10 offset 10
         $posts = Post::query()->limit(10)->offset(10)->get();
 
+        //? PAGINATION
+        $validated = $request->validate([
+            'limit' => ['nullable', 'integer', 'min:1', 'max:100'],
+            'page' => ['nullable', 'integer', 'min:1', 'max:100'],
+        ]);
+
+        $page = $validated['page'] ?? 1;
+        $limit = $validated['limit'] ?? 10;
+        $offset = $limit * ($page - 1);
+
+        $posts = Post::query()->limit($limit)->offset($offset)->get();
+
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
