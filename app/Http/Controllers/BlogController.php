@@ -43,6 +43,12 @@ class BlogController extends Controller
 
         // dd($posts->toArray());
 
+        //* Limit number of queries (select * from posts limit 10)
+        $posts = Post::query()->limit(10)->get();
+
+        //* select * from posts limit 10 offset 10
+        $posts = Post::query()->limit(10)->offset(10)->get();
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
