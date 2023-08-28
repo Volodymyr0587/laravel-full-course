@@ -65,6 +65,21 @@ class BlogController extends Controller
         //* BUILD-IN LARAVEL PAGINATION
         $posts = Post::query()->paginate($limit);
 
+        //? SORTING DATA (SELECT * FROM posts ORDER BY published_at DESC)
+        // $posts = Post::query()->orderBy('published_at', 'desc')->paginate($limit);
+
+        //? Alias for sorting desc
+        $posts = Post::query()->latest('published_at')->paginate($limit);
+
+        //? Alias for orderBy asc
+        // $posts = Post::query()->oldest('published_at')->paginate($limit); // orderBy asc
+
+        //? Several sorting parameters
+        // $posts = Post::query()
+        //     ->latest('published_at')
+        //     ->oldest('id')
+        //     ->paginate($limit);
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
