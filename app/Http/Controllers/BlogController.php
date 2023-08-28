@@ -29,7 +29,17 @@ class BlogController extends Controller
 
         // dd($post);
 
+        //* select * from posts
+        $posts = Post::all();
+
+        //* select id, title, published_at from posts
         $posts = Post::all(['id', 'title', 'published_at']);
+
+        //* select * from posts
+        $posts = Post::query()->get(); // Post::all()
+
+        //* select id, title, published_at from posts
+        $posts = Post::query()->get(['id', 'title', 'published_at']);
 
         dd($posts->toArray());
 
