@@ -131,24 +131,24 @@ class BlogController extends Controller
 
 
     //? ROUTE MODEL BINDING (прив'язка моделі до маршруту)
-    // public function show(Request $request, Post $post)
-    // {
-    //     return view('blog.show', compact('post'));
-    // }
-
-    //? CACHING
-    public function show(Request $request, $post)
+    public function show(Request $request, Post $post)
     {
-        $post = cache()->remember(
-            key: "posts.{$post}",
-            ttl: now()->addHour(),
-            callback: function () use ($post) {
-                // info('cache test');
-                return Post::query()->findOrFail($post);
-        });
-
         return view('blog.show', compact('post'));
     }
+
+    //? CACHING
+    // public function show(Request $request, $post)
+    // {
+    //     $post = cache()->remember(
+    //         key: "posts.{$post}",
+    //         ttl: now()->addHour(),
+    //         callback: function () use ($post) {
+    //             // info('cache test');
+    //             return Post::query()->findOrFail($post);
+    //     });
+
+    //     return view('blog.show', compact('post'));
+    // }
 
     public function like($post)
     {
