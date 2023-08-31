@@ -116,13 +116,15 @@ class BlogController extends Controller
 
         //? find
         //* select id, title, body from posts where id = 123 limit 1
-        $post = Post::query()->find($post, ['id', 'title', 'body']);
+        // $post = Post::query()->find($post, ['id', 'title', 'body']);
 
-        //? findOrFail
-        $post = Post::query()->findOrFail($post, ['id', 'title', 'body']);
+        // //? findOrFail
+        // $post = Post::query()->findOrFail($post, ['id', 'title', 'body']);
 
 
-        dd($post);
+        // dd($post);
+
+        $post = Post::query()->find($post);
 
         return view('blog.show', compact('post'));
     }
