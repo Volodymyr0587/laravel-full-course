@@ -85,8 +85,8 @@ class BlogController extends Controller
         return view('blog.index', compact('posts', 'categories'));
     }
 
-    public function show(Request $request, $post)
-    {
+    // public function show(Request $request, $post)
+    // {
         // $post = (object) [
         //     'id' => rand(1, 100),
         //     'title' => 'Lorem ipsum dolor sit amet.',
@@ -124,7 +124,28 @@ class BlogController extends Controller
 
         // dd($post);
 
-        $post = Post::query()->findOrFail($post);
+    //     $post = Post::query()->findOrFail($post);
+
+    //     return view('blog.show', compact('post'));
+    // }
+
+
+    //? ROUTE MODEL BINDING (прив'язка моделі до маршруту)
+    // public function show(Request $request, Post $post)
+    // {
+    //     return view('blog.show', compact('post'));
+    // }
+
+    //? CACHING
+    public function show(Request $request, $post)
+    {
+        $post = cache()->remember(
+            key: "posts.{$post}",
+            ttl: now()->addHour(),
+            callback: function () use ($post) {
+                // info('cache test');
+                return Post::query()->findOrFail($post);
+        });
 
         return view('blog.show', compact('post'));
     }
