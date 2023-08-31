@@ -109,13 +109,20 @@ class BlogController extends Controller
         // }
 
         //? firstOrFail
-        $post = Post::query()
-            // ->where('user_id', 2034)
-            ->oldest('published_at')
-            ->firstOrFail(['id' , 'title']);
+        // $post = Post::query()
+        //     // ->where('user_id', 2034)
+        //     ->oldest('published_at')
+        //     ->firstOrFail(['id' , 'title']);
+
+        //? find
+        //* select id, title, body from posts where id = 123 limit 1
+        $post = Post::query()->find($post, ['id', 'title', 'body']);
+
+        //? findOrFail
+        $post = Post::query()->findOrFail($post, ['id', 'title', 'body']);
 
 
-        dd($post->title);
+        dd($post);
 
         return view('blog.show', compact('post'));
     }
