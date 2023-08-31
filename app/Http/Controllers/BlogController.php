@@ -124,7 +124,7 @@ class BlogController extends Controller
 
         // dd($post);
 
-        $post = Post::query()->find($post);
+        $post = Post::query()->findOrFail($post);
 
         return view('blog.show', compact('post'));
     }
