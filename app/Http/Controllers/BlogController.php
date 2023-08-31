@@ -30,46 +30,46 @@ class BlogController extends Controller
         // dd($post);
 
         //* select * from posts
-        $posts = Post::all();
+        // $posts = Post::all();
 
-        //* select id, title, published_at from posts
-        $posts = Post::all(['id', 'title', 'published_at']);
+        // //* select id, title, published_at from posts
+        // $posts = Post::all(['id', 'title', 'published_at']);
 
-        //* select * from posts
-        $posts = Post::query()->get(); // Post::all()
+        // //* select * from posts
+        // $posts = Post::query()->get(); // Post::all()
 
-        //* select id, title, published_at from posts
-        $posts = Post::query()->get(['id', 'title', 'published_at']);
+        // //* select id, title, published_at from posts
+        // $posts = Post::query()->get(['id', 'title', 'published_at']);
 
-        // dd($posts->toArray());
+        // // dd($posts->toArray());
 
-        //* Limit number of queries (select * from posts limit 10)
-        $posts = Post::query()->limit(10)->get();
+        // //* Limit number of queries (select * from posts limit 10)
+        // $posts = Post::query()->limit(10)->get();
 
-        //* select * from posts limit 10 offset 10
-        $posts = Post::query()->limit(10)->offset(10)->get();
+        // //* select * from posts limit 10 offset 10
+        // $posts = Post::query()->limit(10)->offset(10)->get();
 
-        //? PAGINATION
-        $validated = $request->validate([
-            'limit' => ['nullable', 'integer', 'min:1', 'max:100'],
-            'page' => ['nullable', 'integer', 'min:1', 'max:100'],
-        ]);
+        // //? PAGINATION
+        // $validated = $request->validate([
+        //     'limit' => ['nullable', 'integer', 'min:1', 'max:100'],
+        //     'page' => ['nullable', 'integer', 'min:1', 'max:100'],
+        // ]);
 
-        $page = $validated['page'] ?? 1;
-        $limit = $validated['limit'] ?? 10;
-        $offset = $limit * ($page - 1);
+        // $page = $validated['page'] ?? 1;
+        // $limit = $validated['limit'] ?? 10;
+        // $offset = $limit * ($page - 1);
 
-        $posts = Post::query()->limit($limit)->offset($offset)->get();
-        //? END PAGINATION
+        // $posts = Post::query()->limit($limit)->offset($offset)->get();
+        // //? END PAGINATION
 
-        //* BUILD-IN LARAVEL PAGINATION
-        $posts = Post::query()->paginate($limit);
+        // //* BUILD-IN LARAVEL PAGINATION
+        // $posts = Post::query()->paginate($limit);
 
         //? SORTING DATA (SELECT * FROM posts ORDER BY published_at DESC)
         // $posts = Post::query()->orderBy('published_at', 'desc')->paginate($limit);
 
         //? Alias for sorting desc
-        $posts = Post::query()->latest('published_at')->paginate($limit);
+        // $posts = Post::query()->latest('published_at')->paginate($limit);
 
         //? Alias for orderBy asc
         // $posts = Post::query()->oldest('published_at')->paginate($limit); // orderBy asc
@@ -80,18 +80,42 @@ class BlogController extends Controller
         //     ->oldest('id')
         //     ->paginate($limit);
 
+        $posts = Post::query()->latest('published_at')->paginate(10);
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
-    public function show()
+    public function show(Request $request, $post)
     {
-        $post = (object) [
-            'id' => rand(1, 100),
-            'title' => 'Lorem ipsum dolor sit amet.',
-            'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
-            'created_at' => Carbon::now()->diffForHumans(),
-            'updated_at' => Carbon::now()->diffForHumans()
-        ];
+        // $post = (object) [
+        //     'id' => rand(1, 100),
+        //     'title' => 'Lorem ipsum dolor sit amet.',
+        //     'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
+        //     'created_at' => Carbon::now()->diffForHumans(),
+        //     'updated_at' => Carbon::now()->diffForHumans()
+        // ];
+
+        //* select * from posts order by published_at asc limit 1
+        // $post = Post::query()->oldest('published_at')->first();
+        // $post = Post::query()->oldest('published_at')->first(['id' , 'title']);
+
+        // $post = Post::query()
+        //     ->where('user_id', 2034)
+        //     ->oldest('published_at')
+        //     ->first(['id' , 'title']);
+
+        // if (is_null($post)) {
+        //     abort(404);
+        // }
+
+        //? firstOrFail
+        $post = Post::query()
+            // ->where('user_id', 2034)
+            ->oldest('published_at')
+            ->firstOrFail(['id' , 'title']);
+
+
+        dd($post->title);
 
         return view('blog.show', compact('post'));
     }
