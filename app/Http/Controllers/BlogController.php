@@ -105,6 +105,13 @@ class BlogController extends Controller
             ->where('title', 'like', "%{$search}%")
             ->paginate(10);
 
+        //* where published_at is null
+        $posts = Post::query()
+            // ->where('published_at', null) // 'published_at', '!=',  null
+            // ->whereNull('published_at')
+            ->whereNotNull('published_at')
+            ->paginate(10);
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
