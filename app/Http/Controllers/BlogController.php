@@ -142,10 +142,19 @@ class BlogController extends Controller
             ])->paginate(10);
 
         //* Several conditions
+        //* select * from `posts` where `is_publish` = ? and `published_at` is not null
         $posts = Post::query()
             ->where('is_publish', true)
             ->whereNotNull('published_at')
             ->paginate(10);
+
+        //* AND OR
+        $posts = Post::query()
+            ->where('is_publish', true)
+            ->whereNotNull('published_at')
+            ->orWhere('id', 1019)
+            ->paginate(10);
+
 
 
         return view('blog.index', compact('posts', 'categories'));
