@@ -187,6 +187,21 @@ class BlogController extends Controller
                 $query->where('published_at', '>=', now()->startOfYear());
             })->paginate(10);
 
+        //* Alternatives for WHEN method:
+            //* #1
+        $query = Post::query();
+
+        if ($fromDate) {
+            $query->where('published_at', '>=', $fromDate);
+        } else {
+            $query->where('published_at', '>=', now()->startOfYear());
+        }
+            //* #2
+        $fromDate
+            ? $query->where('published_at', '>=', $fromDate)
+            : $query->where('published_at', '>=', now()->startOfYear());
+
+        $posts = $query->paginate(10);
 
         return view('blog.index', compact('posts', 'categories'));
     }
