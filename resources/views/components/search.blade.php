@@ -23,6 +23,13 @@
         </x-form.form-input-block>
 
         <x-form.form-input-block>
+            <x-form.form-label for="tag">
+                {{ __('Tag') }}
+            </x-form.form-label>
+            <x-form.form-input name="tag" id="tag" value="{{ request('tag') }}" placeholder="{{ __('Tag') }}" />
+        </x-form.form-input-block>
+
+        <x-form.form-input-block>
             <x-form.form-label for="category_id">
                 {{ __('Category ID') }}
             </x-form.form-label>

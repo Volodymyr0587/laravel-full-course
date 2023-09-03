@@ -207,6 +207,7 @@ class BlogController extends Controller
             'search' => ['nullable', 'string', 'max:50'],
             'from_date' => ['nullable', 'string', 'date'],
             'to_date' => ['nullable', 'string', 'date', 'after:from_date'],
+            'tag' => ['nullable', 'string', 'max:10'],
         ]);
 
         $query = Post::query()
@@ -223,6 +224,10 @@ class BlogController extends Controller
 
         if ($toDate = $validated['to_date'] ?? null) {
             $query->where('published_at', '<=', new Carbon($toDate));
+        }
+
+        if ($tag = $validated['tag'] ?? null) {
+            $query->whereJsonContains('tags', $tag);
         }
 
         $posts = $query->latest('published_at')
