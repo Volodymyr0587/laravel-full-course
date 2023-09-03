@@ -118,6 +118,11 @@ class BlogController extends Controller
             ->offset(10)
             ->toSql();
 
+        //* where id in (1017, 1018, 1019)
+        $posts = Post::query()
+            // ->whereIn('id', [1017, 1018, 1019])
+            ->whereNotIn('id', [1017, 1018, 1019])
+            ->paginate(10);
 
 
         return view('blog.index', compact('posts', 'categories'));
