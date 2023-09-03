@@ -86,7 +86,7 @@ class BlogController extends Controller
         // УМОВИ
         //* where
         $posts = Post::query()
-            ->where('id', '=', 1027) // '!='
+            ->where('id', '=', 1027) //?  Можна використовувати `!=`,  `>`, `<`, `>=`, `<=`
             ->paginate(10);
 
         $posts = Post::query()
@@ -96,6 +96,13 @@ class BlogController extends Controller
         //* whereColumn
         $posts = Post::query()
             ->whereColumn('title', 'body')
+            ->paginate(10);
+
+        //* like
+        $search = 'dolor';
+
+        $posts = Post::query()
+            ->where('title', 'like', "%{$search}%")
             ->paginate(10);
 
         return view('blog.index', compact('posts', 'categories'));
