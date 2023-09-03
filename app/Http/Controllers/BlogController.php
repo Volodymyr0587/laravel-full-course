@@ -14,7 +14,8 @@ class BlogController extends Controller
         $categories = [
             null => __('All categories'),
             1 => __('First category'),
-            2 => __('Second category')];
+            2 => __('Second category')
+        ];
 
         // /** @var Post $post */
         // $post = Post::query()->first();
@@ -82,47 +83,57 @@ class BlogController extends Controller
 
         $posts = Post::query()->latest('published_at')->paginate(10);
 
+        // УМОВИ
+        //* WHERE
+        $posts = Post::query()
+            ->where('id', '=', 1027) // '!='
+            ->paginate(10);
+
+        $posts = Post::query()
+            ->where('is_publish', true)
+            ->paginate(10);
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
     // public function show(Request $request, $post)
     // {
-        // $post = (object) [
-        //     'id' => rand(1, 100),
-        //     'title' => 'Lorem ipsum dolor sit amet.',
-        //     'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
-        //     'created_at' => Carbon::now()->diffForHumans(),
-        //     'updated_at' => Carbon::now()->diffForHumans()
-        // ];
+    // $post = (object) [
+    //     'id' => rand(1, 100),
+    //     'title' => 'Lorem ipsum dolor sit amet.',
+    //     'body' => 'Lorem ipsum ,dolor sit, amet consectetur adipisicing elit. Sit, deleniti impedit voluptatibus sequi inventore ratione molestias totam aperiam reprehenderit dicta nisi perspiciatis laborum quibusdam! A officiis dolores consectetur magni. Ea.',
+    //     'created_at' => Carbon::now()->diffForHumans(),
+    //     'updated_at' => Carbon::now()->diffForHumans()
+    // ];
 
-        //* select * from posts order by published_at asc limit 1
-        // $post = Post::query()->oldest('published_at')->first();
-        // $post = Post::query()->oldest('published_at')->first(['id' , 'title']);
+    //* select * from posts order by published_at asc limit 1
+    // $post = Post::query()->oldest('published_at')->first();
+    // $post = Post::query()->oldest('published_at')->first(['id' , 'title']);
 
-        // $post = Post::query()
-        //     ->where('user_id', 2034)
-        //     ->oldest('published_at')
-        //     ->first(['id' , 'title']);
+    // $post = Post::query()
+    //     ->where('user_id', 2034)
+    //     ->oldest('published_at')
+    //     ->first(['id' , 'title']);
 
-        // if (is_null($post)) {
-        //     abort(404);
-        // }
+    // if (is_null($post)) {
+    //     abort(404);
+    // }
 
-        //? firstOrFail
-        // $post = Post::query()
-        //     // ->where('user_id', 2034)
-        //     ->oldest('published_at')
-        //     ->firstOrFail(['id' , 'title']);
+    //? firstOrFail
+    // $post = Post::query()
+    //     // ->where('user_id', 2034)
+    //     ->oldest('published_at')
+    //     ->firstOrFail(['id' , 'title']);
 
-        //? find
-        //* select id, title, body from posts where id = 123 limit 1
-        // $post = Post::query()->find($post, ['id', 'title', 'body']);
+    //? find
+    //* select id, title, body from posts where id = 123 limit 1
+    // $post = Post::query()->find($post, ['id', 'title', 'body']);
 
-        // //? findOrFail
-        // $post = Post::query()->findOrFail($post, ['id', 'title', 'body']);
+    // //? findOrFail
+    // $post = Post::query()->findOrFail($post, ['id', 'title', 'body']);
 
 
-        // dd($post);
+    // dd($post);
 
     //     $post = Post::query()->findOrFail($post);
 
