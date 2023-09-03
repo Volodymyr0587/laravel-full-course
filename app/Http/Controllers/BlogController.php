@@ -84,13 +84,18 @@ class BlogController extends Controller
         $posts = Post::query()->latest('published_at')->paginate(10);
 
         // УМОВИ
-        //* WHERE
+        //* where
         $posts = Post::query()
             ->where('id', '=', 1027) // '!='
             ->paginate(10);
 
         $posts = Post::query()
             ->where('is_publish', true)
+            ->paginate(10);
+
+        //* whereColumn
+        $posts = Post::query()
+            ->whereColumn('title', 'body')
             ->paginate(10);
 
         return view('blog.index', compact('posts', 'categories'));
