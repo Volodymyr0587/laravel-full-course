@@ -175,6 +175,19 @@ class BlogController extends Controller
             })->paginate(10);
 
 
+        //* Method WHEN
+        $fromDate = new Carbon('2023-08-01 00:00:00');
+        // $fromDate = null;
+        $toDate = new Carbon('2023-08-31 23:59:59');
+
+        $posts = Post::query()
+            ->when($fromDate, function (Builder $query, Carbon $fromDate) {
+                $query->where('published_at', '>=', $fromDate);
+            }, function (Builder $query) {
+                $query->where('published_at', '>=', now()->startOfYear());
+            })->paginate(10);
+
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
