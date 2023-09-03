@@ -209,7 +209,8 @@ class BlogController extends Controller
             'to_date' => ['nullable', 'string', 'date', 'after:from_date'],
         ]);
 
-        $query = Post::query();
+        $query = Post::query()
+            ->where('is_publish', true);
 
         if ($search = $validated['search'] ?? null) {
             $query->where('title', 'like', "%{$search}%");
