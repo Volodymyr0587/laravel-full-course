@@ -12,12 +12,6 @@ class BlogController extends Controller
 {
     public function index(Request $request)
     {
-        $categories = [
-            null => __('All categories'),
-            1 => __('First category'),
-            2 => __('Second category')
-        ];
-
         // /** @var Post $post */
         // $post = Post::query()->first();
 
@@ -82,126 +76,155 @@ class BlogController extends Controller
         //     ->oldest('id')
         //     ->paginate($limit);
 
-        $posts = Post::query()->latest('published_at')->paginate(10);
+        // $posts = Post::query()->latest('published_at')->paginate(10);
 
         // УМОВИ
         //* where
-        $posts = Post::query()
-            ->where('id', '=', 1027) //?  Можна використовувати `!=`,  `>`, `<`, `>=`, `<=`
-            ->paginate(10);
+        // $posts = Post::query()
+        //     ->where('id', '=', 1027) //?  Можна використовувати `!=`,  `>`, `<`, `>=`, `<=`
+        //     ->paginate(10);
 
-        $posts = Post::query()
-            ->where('is_publish', true)
-            ->paginate(10);
+        // $posts = Post::query()
+        //     ->where('is_publish', true)
+        //     ->paginate(10);
 
-        //* whereColumn
-        $posts = Post::query()
-            ->whereColumn('title', 'body')
-            ->paginate(10);
+        // //* whereColumn
+        // $posts = Post::query()
+        //     ->whereColumn('title', 'body')
+        //     ->paginate(10);
 
-        //* like
-        $search = 'dolor';
+        // //* like
+        // $search = 'dolor';
 
-        $posts = Post::query()
-            ->where('title', 'like', "%{$search}%")
-            ->paginate(10);
+        // $posts = Post::query()
+        //     ->where('title', 'like', "%{$search}%")
+        //     ->paginate(10);
 
-        //* where published_at is null
-        $posts = Post::query()
-            // ->where('published_at', null) // 'published_at', '!=',  null
-            // ->whereNull('published_at')
-            ->whereNotNull('published_at')
-            ->paginate(10);
+        // //* where published_at is null
+        // $posts = Post::query()
+        //     // ->where('published_at', null) // 'published_at', '!=',  null
+        //     // ->whereNull('published_at')
+        //     ->whereNotNull('published_at')
+        //     ->paginate(10);
 
-        //* toSql()
-        $posts = Post::query()
-            ->whereNull('published_at')
-            ->offset(10)
-            ->toSql();
+        // //* toSql()
+        // $posts = Post::query()
+        //     ->whereNull('published_at')
+        //     ->offset(10)
+        //     ->toSql();
 
-        //* where id in (1017, 1018, 1019)
-        $posts = Post::query()
-            // ->whereIn('id', [1017, 1018, 1019])
-            ->whereNotIn('id', [1017, 1018, 1019])
-            ->paginate(10);
+        // //* where id in (1017, 1018, 1019)
+        // $posts = Post::query()
+        //     // ->whereIn('id', [1017, 1018, 1019])
+        //     ->whereNotIn('id', [1017, 1018, 1019])
+        //     ->paginate(10);
 
-        //* whereDate, whereYear, whereMonth, whereDay
-        $posts = Post::query()
-            // ->whereDate('published_at', new Carbon('2023-08-12'))
-            ->whereDate('published_at', '>',  new Carbon('2023-08-12'))
-            // ->whereYear('published_at', 2023)
-            // ->whereMonth('published_at', 1)
-            // ->whereDay('published_at', 13)
-            ->paginate(10);
+        // //* whereDate, whereYear, whereMonth, whereDay
+        // $posts = Post::query()
+        //     // ->whereDate('published_at', new Carbon('2023-08-12'))
+        //     ->whereDate('published_at', '>',  new Carbon('2023-08-12'))
+        //     // ->whereYear('published_at', 2023)
+        //     // ->whereMonth('published_at', 1)
+        //     // ->whereDay('published_at', 13)
+        //     ->paginate(10);
 
-        //* whereBetween
-        $posts = Post::query()
-            // ->whereBetween('id', [1024, 1035]) // 1024 <= id <= 1035
-            ->whereBetween('published_at', [
-                new Carbon('2023-01-01'),
-                new Carbon('2023-01-20')
-            ])->paginate(10);
+        // //* whereBetween
+        // $posts = Post::query()
+        //     // ->whereBetween('id', [1024, 1035]) // 1024 <= id <= 1035
+        //     ->whereBetween('published_at', [
+        //         new Carbon('2023-01-01'),
+        //         new Carbon('2023-01-20')
+        //     ])->paginate(10);
 
-        //* Several conditions
-        //* select * from `posts` where `is_publish` = ? and `published_at` is not null
-        $posts = Post::query()
-            ->where('is_publish', true)
-            ->whereNotNull('published_at')
-            ->paginate(10);
+        // //* Several conditions
+        // //* select * from `posts` where `is_publish` = ? and `published_at` is not null
+        // $posts = Post::query()
+        //     ->where('is_publish', true)
+        //     ->whereNotNull('published_at')
+        //     ->paginate(10);
 
-        //* AND OR
-        $posts = Post::query()
-            ->where('is_publish', true)
-            ->whereNotNull('published_at')
-            ->orWhere('id', 1019)
-            ->paginate(10);
-
-        //* GROUP CONDITION
-        //* select * from `posts` where (`is_publish` = ? and `published_at` is not null) or `id` = ?
-        // $posts = dd(Post::query()
-        //     ->where(function (Builder $query) {
-        //         $query->where('is_publish', true)
-        //             ->whereNotNull('published_at');
-        //     })
+        // //* AND OR
+        // $posts = Post::query()
+        //     ->where('is_publish', true)
+        //     ->whereNotNull('published_at')
         //     ->orWhere('id', 1019)
-        //     ->toSql());
-        //     // ->paginate(10);
+        //     ->paginate(10);
 
-        $posts = Post::query()
-            ->where('is_publish', true)
-            ->where(function (Builder $query) {
-                $query->where('id', 1019)
-                    ->orWhereNotNull('published_at');
-            })->paginate(10);
+        // //* GROUP CONDITION
+        // //* select * from `posts` where (`is_publish` = ? and `published_at` is not null) or `id` = ?
+        // // $posts = dd(Post::query()
+        // //     ->where(function (Builder $query) {
+        // //         $query->where('is_publish', true)
+        // //             ->whereNotNull('published_at');
+        // //     })
+        // //     ->orWhere('id', 1019)
+        // //     ->toSql());
+        // //     // ->paginate(10);
+
+        // $posts = Post::query()
+        //     ->where('is_publish', true)
+        //     ->where(function (Builder $query) {
+        //         $query->where('id', 1019)
+        //             ->orWhereNotNull('published_at');
+        //     })->paginate(10);
 
 
-        //* Method WHEN
-        $fromDate = new Carbon('2023-08-01 00:00:00');
-        // $fromDate = null;
-        $toDate = new Carbon('2023-08-31 23:59:59');
+        // //* Method WHEN
+        // $fromDate = new Carbon('2023-08-01 00:00:00');
+        // // $fromDate = null;
+        // $toDate = new Carbon('2023-08-31 23:59:59');
 
-        $posts = Post::query()
-            ->when($fromDate, function (Builder $query, Carbon $fromDate) {
-                $query->where('published_at', '>=', $fromDate);
-            }, function (Builder $query) {
-                $query->where('published_at', '>=', now()->startOfYear());
-            })->paginate(10);
+        // $posts = Post::query()
+        //     ->when($fromDate, function (Builder $query, Carbon $fromDate) {
+        //         $query->where('published_at', '>=', $fromDate);
+        //     }, function (Builder $query) {
+        //         $query->where('published_at', '>=', now()->startOfYear());
+        //     })->paginate(10);
 
-        //* Alternatives for WHEN method:
-            //* #1
+        // //* Alternatives for WHEN method:
+        //     //* #1
+        // $query = Post::query();
+
+        // if ($fromDate) {
+        //     $query->where('published_at', '>=', $fromDate);
+        // } else {
+        //     $query->where('published_at', '>=', now()->startOfYear());
+        // }
+        //     //* #2
+        // $fromDate
+        //     ? $query->where('published_at', '>=', $fromDate)
+        //     : $query->where('published_at', '>=', now()->startOfYear());
+
+        // $posts = $query->paginate(10);
+
+        $categories = [
+            null => __('All categories'),
+            1 => __('First category'),
+            2 => __('Second category')
+        ];
+
+        $validated = $request->validate([
+            'search' => ['nullable', 'string', 'max:50'],
+            'from_date' => ['nullable', 'string', 'date'],
+            'to_date' => ['nullable', 'string', 'date', 'after:from_date'],
+        ]);
+
         $query = Post::query();
 
-        if ($fromDate) {
-            $query->where('published_at', '>=', $fromDate);
-        } else {
-            $query->where('published_at', '>=', now()->startOfYear());
+        if ($search = $validated['search'] ?? null) {
+            $query->where('title', 'like', "%{$search}%");
         }
-            //* #2
-        $fromDate
-            ? $query->where('published_at', '>=', $fromDate)
-            : $query->where('published_at', '>=', now()->startOfYear());
 
-        $posts = $query->paginate(10);
+        if ($fromDate = $validated['from_ate'] ?? null) {
+            $query->where('published_at', '>=', new Carbon($fromDate));
+        }
+
+        if ($toDate = $validated['to_date'] ?? null) {
+            $query->where('published_at', '<=', new Carbon($toDate));
+        }
+
+        $posts = $query->latest('published_at')
+            ->paginate(10);
 
         return view('blog.index', compact('posts', 'categories'));
     }

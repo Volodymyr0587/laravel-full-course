@@ -5,7 +5,7 @@
     <x-title>Posts list</x-title>
 
     <div class="mt-10 grid grid-cols-2 lg:grid-cols-3">
-        @if ($posts)
+        @if (!$posts->isEmpty())
             @foreach ($posts as $post)
                 <div class="mb-4">
                     <p>{{ $post->id }}</p>

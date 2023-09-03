@@ -9,6 +9,20 @@
         </x-form.form-input-block>
 
         <x-form.form-input-block>
+            <x-form.form-label for="from_date">
+                {{ __('From date') }}
+            </x-form.form-label>
+            <x-form.form-input name="from_date" id="from_date" value="{{ request('from_date') }}" placeholder="{{ __('From date') }}" />
+        </x-form.form-input-block>
+
+        <x-form.form-input-block>
+            <x-form.form-label for="to_date">
+                {{ __('To date') }}
+            </x-form.form-label>
+            <x-form.form-input name="to_date" id="to_date" value="{{ request('to_date') }}" placeholder="{{ __('To date') }}" />
+        </x-form.form-input-block>
+
+        <x-form.form-input-block>
             <x-form.form-label for="category_id">
                 {{ __('Category ID') }}
             </x-form.form-label>
