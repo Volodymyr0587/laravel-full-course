@@ -210,7 +210,8 @@ class BlogController extends Controller
         ]);
 
         $query = Post::query()
-            ->where('is_publish', true);
+            ->where('is_publish', true)
+            ->whereNotNull('published_at');
 
         if ($search = $validated['search'] ?? null) {
             $query->where('title', 'like', "%{$search}%");
