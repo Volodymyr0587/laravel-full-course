@@ -19,7 +19,7 @@
                     </x-post-body>
                     <x-time-stamp>
                         {{-- {{ $post->published_at->format('d.m.Y H:i:s') }} --}}
-                        {{ $post->published_at->diffForHumans() }}
+                        {{ $post->published_at?->diffForHumans() }}
                     </x-time-stamp>
                     {{-- <x-time-stamp>
                         Updated {{ $post->updated_at }}
