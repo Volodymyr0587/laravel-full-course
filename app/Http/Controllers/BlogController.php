@@ -133,6 +133,13 @@ class BlogController extends Controller
             // ->whereDay('published_at', 13)
             ->paginate(10);
 
+        //* whereBetween
+        $posts = Post::query()
+            // ->whereBetween('id', [1024, 1035]) // 1024 <= id <= 1035
+            ->whereBetween('published_at', [
+                new Carbon('2023-01-01'),
+                new Carbon('2023-01-20')
+            ])->paginate(10);
 
         return view('blog.index', compact('posts', 'categories'));
     }
