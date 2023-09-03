@@ -124,6 +124,15 @@ class BlogController extends Controller
             ->whereNotIn('id', [1017, 1018, 1019])
             ->paginate(10);
 
+        //* whereDate, whereYear, whereMonth, whereDay
+        $posts = Post::query()
+            // ->whereDate('published_at', new Carbon('2023-08-12'))
+            ->whereDate('published_at', '>',  new Carbon('2023-08-12'))
+            // ->whereYear('published_at', 2023)
+            // ->whereMonth('published_at', 1)
+            // ->whereDay('published_at', 13)
+            ->paginate(10);
+
 
         return view('blog.index', compact('posts', 'categories'));
     }
