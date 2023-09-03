@@ -112,6 +112,14 @@ class BlogController extends Controller
             ->whereNotNull('published_at')
             ->paginate(10);
 
+        //* toSql()
+        $posts = Post::query()
+            ->whereNull('published_at')
+            ->offset(10)
+            ->toSql();
+
+
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
