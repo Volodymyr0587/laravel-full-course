@@ -141,6 +141,13 @@ class BlogController extends Controller
                 new Carbon('2023-01-20')
             ])->paginate(10);
 
+        //* Декілька умов
+        $posts = Post::query()
+            ->where('is_publish', true)
+            ->whereNotNull('published_at')
+            ->paginate(10);
+
+
         return view('blog.index', compact('posts', 'categories'));
     }
 
