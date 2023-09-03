@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -155,6 +156,23 @@ class BlogController extends Controller
             ->orWhere('id', 1019)
             ->paginate(10);
 
+        //* GROUP CONDITION
+        //* select * from `posts` where (`is_publish` = ? and `published_at` is not null) or `id` = ?
+        // $posts = dd(Post::query()
+        //     ->where(function (Builder $query) {
+        //         $query->where('is_publish', true)
+        //             ->whereNotNull('published_at');
+        //     })
+        //     ->orWhere('id', 1019)
+        //     ->toSql());
+        //     // ->paginate(10);
+
+        $posts = Post::query()
+            ->where('is_publish', true)
+            ->where(function (Builder $query) {
+                $query->where('id', 1019)
+                    ->orWhereNotNull('published_at');
+            })->paginate(10);
 
 
         return view('blog.index', compact('posts', 'categories'));
