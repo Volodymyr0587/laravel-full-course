@@ -23,7 +23,7 @@
                     </a>
 
                     <x-time-stamp>
-                        Created {{ $post->published_at->diffForHumans() }}
+                        Created {{ $post->published_at?->diffForHumans() }}
                     </x-time-stamp>
                     {{-- <x-time-stamp>
                         Updated {{ $post->updated_at }}
