@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\DonateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\PostController;
 
@@ -25,4 +26,6 @@ Route::prefix('user')->group(function () {
     Route::delete('posts/{post}', [PostController::class, 'destroy'])->name('user.posts.destroy');
 
     Route::put('posts/{post}/like', [PostController::class, 'like'])->name('user.posts.like');
+
+    Route::get('donates', DonateController::class)->name('user.donates');
 });
