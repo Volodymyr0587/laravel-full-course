@@ -2,27 +2,27 @@
 
     <div class="m-10">
         Number of donations
-        <h4>12345</h4>
+        <h4>{{ $stats['total_count'] }}</h4>
     </div>
 
     <div class="m-10">
-        Number of donations
-        <h4>12345</h4>
+        Total sum
+        <h4>{{ $stats['total_amount'] }}</h4>
     </div>
 
     <div class="m-10">
-        Number of donations
-        <h4>12345</h4>
+        Averange
+        <h4>{{ $stats['avg_amount'] }}</h4>
     </div>
 
     <div class="m-10">
-        Number of donations
-        <h4>12345</h4>
+        Minimum
+        <h4>{{ $stats['min_amount'] }}</h4>
     </div>
 
     <div class="m-10">
-        Number of donations
-        <h4>12345</h4>
+        Maximum
+        <h4>{{ $stats['max_amount'] }}</h4>
     </div>
 
 </x-post-body>

@@ -3,6 +3,6 @@
 @section('content')
 
     {{-- <x-user-donates :posts=$posts/> --}}
-    <x-user-donates />
+    <x-user-donates :stats=$stats/>
 
 @endsection

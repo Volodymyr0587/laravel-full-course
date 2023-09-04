@@ -14,19 +14,28 @@ class DonateController extends Controller
         // ->where('created_at', '<=', now()->subMonth()->endOfMonth())
 
         //* Загальна кількість
-        $stats = Donate::query()->count();
-        //* за попередній місяц
-        $stats = Donate::query()
-            ->where('created_at', '>=', now()->subMonth()->startOfMonth())
-            ->where('created_at', '<=', now()->subMonth()->endOfMonth())
-            ->sum('amount');
-        //* Середне значення
-        $stats = Donate::query()->avg('amount');
-        //* Мінімальне значення
-        $stats = Donate::query()->min('amount');
-        //* Максимальне значення
-        $stats = Donate::query()->max('amount');
+        // $total_count = Donate::query()->count();
+        // //* за попередній місяц
+        // $stats = Donate::query()
+        //     ->where('created_at', '>=', now()->subMonth()->startOfMonth())
+        //     ->where('created_at', '<=', now()->subMonth()->endOfMonth())
+        //     ->sum('amount');
+        //* Загальна сума
+        // $total_amount = Donate::query()->sum('amount');
+        // //* Середне значення
+        // $avg_amount = Donate::query()->avg('amount');
+        // //* Мінімальне значення
+        // $min_amount = Donate::query()->min('amount');
+        // //* Максимальне значення
+        // $max_amount = Donate::query()->max('amount');
 
-        return view('user.donates.index');
+        $stats = [
+            'total_count' => Donate::query()->count(),
+            'total_amount' => Donate::query()->sum('amount'),
+            'avg_amount' => Donate::query()->avg('amount'),
+            'min_amount' => Donate::query()->min('amount'),
+            'max_amount' => Donate::query()->max('amount'),
+        ];
+        return view('user.donates.index', compact('stats'));
     }
 }
