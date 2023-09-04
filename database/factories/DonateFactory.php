@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Currency;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class DonateFactory extends Factory
     {
         return [
             'created_at' => now()->subDays(rand(0, 1000)),
+            'currency_id' => Currency::query()->get()->random()->id,
             'amount' => $this->faker->randomNumber(1, 1000),
         ];
     }

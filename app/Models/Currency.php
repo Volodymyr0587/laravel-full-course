@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Currency extends Model
 {
-    use HasFactory;
+    // use HasFactory;
 
     // protected $table = 'foobar';
     // protected $primaryKey = 'uuid';
@@ -17,7 +17,7 @@ class Currency extends Model
     // protected $connection = 'second';
 
     protected $fillable = [
-        'id', 'name', 'price', 'active', 'sort',
+        'id', 'name',
     ];
 
     // protected $guarded = [];
@@ -26,12 +26,12 @@ class Currency extends Model
     //     'price'
     // ];
 
-    protected $casts = [
-        'price' => 'float',
-        'active' => 'boolean',
-        'sort' => 'integer',
-        'active_at' => 'date',
-    ];
+    // protected $casts = [
+    //     'price' => 'float',
+    //     'active' => 'boolean',
+    //     'sort' => 'integer',
+    //     'active_at' => 'date',
+    // ];
 
     // protected $dates = [
     //     'active_at',

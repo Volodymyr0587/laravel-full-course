@@ -9,7 +9,7 @@ class Donate extends Model
 {
     use HasFactory;
     protected $fillable = [
-        // 'created_at',
+        'created_at',
         'amount'
     ];
 }

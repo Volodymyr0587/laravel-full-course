@@ -17,10 +17,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('name');
-            $table->decimal('price')->unsigned();
-            $table->boolean('active')->default(true);
-            $table->timestamp('active_at')->nullable();
-            $table->integer('sort')->unsigned()->default(999);
         });
     }
 
