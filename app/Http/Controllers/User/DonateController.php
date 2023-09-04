@@ -10,8 +10,23 @@ class DonateController extends Controller
 {
     public function __invoke()
     {
-        $stats = Donate::query()->count(); //*кількість записів в таблиці `donates`
+        // ->where('created_at', '>=', now()->subMonth()->startOfMonth())
+        // ->where('created_at', '<=', now()->subMonth()->endOfMonth())
 
-        dd($stats);
+        //* Загальна кількість
+        $stats = Donate::query()->count();
+        //* за попередній місяц
+        $stats = Donate::query()
+            ->where('created_at', '>=', now()->subMonth()->startOfMonth())
+            ->where('created_at', '<=', now()->subMonth()->endOfMonth())
+            ->sum('amount');
+        //* Середне значення
+        $stats = Donate::query()->avg('amount');
+        //* Мінімальне значення
+        $stats = Donate::query()->min('amount');
+        //* Максимальне значення
+        $stats = Donate::query()->max('amount');
+
+        return view('user.donates.index');
     }
 }
