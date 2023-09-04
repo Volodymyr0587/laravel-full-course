@@ -11,22 +11,22 @@
 
         <div class="m-10">
             Total sum
-            <h4>{{ $stats->total_amount }}</h4>
+            <h4>{{ __money($stats->total_amount, $stats->currency_id) }}</h4>
         </div>
 
         <div class="m-10">
             Averange
-            <h4>{{ $stats->avg_amount }}</h4>
+            <h4>{{ __money($stats->avg_amount, $stats->currency_id) }}</h4>
         </div>
 
         <div class="m-10">
             Minimum
-            <h4>{{ $stats->min_amount }}</h4>
+            <h4>{{ __money($stats->min_amount, $stats->currency_id) }}</h4>
         </div>
 
         <div class="m-10 mb-10">
             Maximum
-            <h4>{{ $stats->max_amount }}</h4>
+            <h4>{{ __money($stats->max_amount, $stats->currency_id) }}</h4>
         </div>
 
     </x-post-body>
