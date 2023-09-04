@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donate extends Model
 {
+    use HasFactory;
     protected $fillable = [
+        // 'created_at',
         'amount'
     ];
 }
