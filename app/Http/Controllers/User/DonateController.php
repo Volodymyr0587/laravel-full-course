@@ -37,16 +37,20 @@ class DonateController extends Controller
         //     'max_amount' => Donate::query()->max('amount'),
         // ];
 
-        $stats = Donate::query()
+        $statistics = Donate::query()
+            ->select(['currency_id'])
             ->selectRaw('count(*) as total_count')
             ->selectRaw('sum(amount) as total_amount')
             ->selectRaw('avg(amount) as avg_amount')
             ->selectRaw('min(amount) as min_amount')
             ->selectRaw('max(amount) as max_amount')
-            ->first();
+            // ->where('created_at', '>=', now()->subMonth()->startOfMonth())
+            // ->where('created_at', '<=', now()->subMonth()->endOfMonth())
+            ->groupBy('currency_id')
+            ->get();
 
-        // dd($stats->toArray());
+        // dd($statistics->toArray());
 
-        return view('user.donates.index', compact('stats'));
+        return view('user.donates.index', compact('statistics'));
     }
 }
